@@ -1,0 +1,75 @@
+
+body{
+    font-family: sans-serif;  
+    font-size: 20px;    
+    margin:0;
+    padding:0;
+    width: 100%;    
+}
+
+.window{
+    height: 100%;
+    width:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center; 
+    justify-content: center; 
+    overflow: auto;   
+    text-align:   center; 
+}
+
+.window .wrap{ 
+   border: 1px solid gray; 
+}
+
+.window .wrap .header{
+  margin:20px;
+}
+
+.window .wrap .header div{
+  display: inline;
+  background-color: rgb(230,240,240);
+  cursor: pointer; 
+}
+
+.window .wrap .header .active{    
+  color: rgb(40,90,40);   
+  background-color: rgb(220,200,200);
+}
+
+.window .wrap .line{
+  margin:20px;
+}
+
+.window .wrap .line  input[type='text'],
+.window .wrap .line .edit input[type='email'],
+.window .wrap .line .edit input[type='password']{       
+  width: 400px;
+  height: 25px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.window .wrap .buttons{
+    margin:20px;
+    text-align: right;
+}
+
+.window .wrap .buttons .button{    
+  padding: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  color:#808080;
+  border-radius:  7px;
+}
+
+.window .wrap .buttons .button:hover{
+  background-color:#2E8B57;    
+  color:  white;
+  border-radius:  7px;
+}
+
+
