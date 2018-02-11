@@ -53,6 +53,10 @@ body{
   font-size: 20px;
 }
 
+input[type="text"][title]:hover:after {
+    color:#808080 ;
+}
+
 .window .wrap .buttons{
     margin:20px;
     text-align: right;
@@ -72,4 +76,10 @@ body{
   border-radius:  7px;
 }
 
+label {
+  background: grey;
+  border-radius: 5px;
+  display: block;
+  margin-top: 5px;
+}
 
