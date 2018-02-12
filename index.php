@@ -1,6 +1,6 @@
 <?php
   if(isset($_SESSION['logged_user'])) {
-    echo '<script>document.location.href="second.php";</script>'; }
+    echo '<script>document.location.href="welcome.php";</script>'; }
 ?> 
 <!DOCTYPE html>
 <html>

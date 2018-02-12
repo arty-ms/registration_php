@@ -26,7 +26,14 @@ $('#loginsbmt').click(function(){
       alert('Error AJAX: ' + text + ' | ' + error);
     },
     success: function (data) {
-     alert(data);
+      if (data){
+        alert(data);
+      }
+      else{
+        document.location.href='welcome.php';
+      }
+     
+
     },
     dataType: 'text'
     });
