@@ -76,10 +76,4 @@ input[type="text"][title]:hover:after {
   border-radius:  7px;
 }
 
-label {
-  background: grey;
-  border-radius: 5px;
-  display: block;
-  margin-top: 5px;
-}
 
