@@ -1,37 +1,63 @@
 <?php
-  $login = $_POST['login'];
-  $password = $_POST['password'];
-  $errors = [];
-  $params = Array($login, $password);
-  $title = Array('login','password');
-  for ($i = 0; $i <= 1; $i++) {
-    if (empty($params[$i])){
-        $errors += [$title[$i]=>'is empty'];
-    }
-  }
+  class Login{
+    private $login;
+    private $password;
+    private $errors;
+    private $params;
+    private $title;
 
-  $xml = simplexml_load_file("db.xml");
-  foreach($xml->User as $user){
-    if($user->login == $login){
-      $errors = [];
-      $pass = md5(stripslashes(trim($password)));
-      if($user->password == $pass."wwqwq"){
-        break;}
-      else{
-        $errors += [$title[1]=>'not correct'];
+    public function __construct() {
+      $this->login = $_POST['login'];
+      $this->password = $_POST['password'];
+      $this->errors = [];
+      $this->params = Array($this->login, $this->password);
+      $this->title = Array('login','password');
+    }
+
+    function is_empty(){
+      for ($i = 0; $i <= 1; $i++) {
+        if (empty($this->params[$i])){
+            $this->errors += [$this->title[$i]=>'is empty'];
+        }
       }
+      return $this->errors;
     }
-    else{
-      $errors += [$title[0]=>'not correct'];
-    }
-  }
 
-  if (!(empty($errors))){
-    echo json_encode($errors);      
-  }
-  else{
-    setcookie("login",$login);
-    session_start();
-    $_SESSION['logged_user'] = $login;    
-  }
+    function user_exist(){
+      $xml = simplexml_load_file("db.xml");
+      foreach($xml->User as $user){
+        if($user->login == $this->login){
+          $errors = [];
+          $pass = md5(stripslashes(trim($this->password)));
+          if($user->password == $pass."wwqwq"){
+            return $this->errors;;}
+          else{
+            $this->errors += [$this->title[1]=>'not correct'];
+            return  $this->errors;
+          }
+        }
+          
+      }
+      $this->errors += [$this->title[0]=>'not correct'];
+      return  $this->errors;
+    }
+
+      
+    function set_session_cookie(){
+      setcookie("login",$this->login);
+      session_start();
+      $_SESSION['logged_user'] = $this->login;
+    }
+}
+
+$log = new Login;
+$errors = [];
+$errors = $log->is_empty();
+$errors = $log->user_exist();
+if (!(empty($errors))){
+  echo json_encode($errors);
+}
+else{
+  $log->set_session_cookie();
+}
 ?>
